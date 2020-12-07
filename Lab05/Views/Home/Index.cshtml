@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Lab05.Models.Recipe>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Welcome to The Baker's Index, Where you can find all the recipes you'll ever need!</p>
+    <!--
+        Using imported model, using database context, I created a display of recipe cards on the homepage
+        Foreach to display all cards in the database
+    -->
+    <div class="list">
+        @foreach (var item in Model)
+        {
+            <div class="card">
+                <h3>
+                    @Html.DisplayFor(modelItem => item.recipeName) By @Html.DisplayFor(modelItem => item.Author)
+                </h3>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Lab05.Models.Recipe>
+
+@{
+    ViewData["Title"] = "All Recipes";
+}
+
+<h1>All Recipes</h1>
+
+<p>
+    <a asp-action="Create">Create New Recipe</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.recipeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ingredients)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cookTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.directions)
+            </th>
+            <th width="50rem"></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.recipeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ingredients)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cookTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.directions)
+            </td>
+            <td>
+                <a class="crud" asp-action="Edit" asp-route-id="@item.recipeId">Edit</a> 
+                <hr />
+                <a class="crud" asp-action="Details" asp-route-id="@item.recipeId">Details</a>
+                <hr />
+                <a class="crud" asp-action="Delete" asp-route-id="@item.recipeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
